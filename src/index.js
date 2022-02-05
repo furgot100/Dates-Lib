@@ -13,7 +13,7 @@ class GetDate {
         return this._date.getFullYear()
     }
     get yr() {
-        return parseInt(this._date.getFullYear().toString().slice(2))
+        return this.year % 100
     }
 
     get month() {
@@ -45,14 +45,35 @@ class GetDate {
     get secs() {
         return this._date.getSeconds()
     }
+
+    format = (mask) => {
+        const fobj = {
+            'Y': this.year,
+            'y': this.yr,
+            'M': this.month,
+            'm': this.mon,
+            'D': this.day,
+            'd': this.dy
+        }
+
+        if(!mask) {
+            return `${this.day} ${this.mon}, ${this.year}`
+        }
+
+        const newArr = []
+        const maskArr = mask.split('')
+        for(let i = 0; i<maskArr.length; i+=1) {
+            if (fobj[maskArr[i]]) {
+                newArr.push(fobj[maskArr[i]])
+            } else {
+                newArr.push(maskArr[i])
+            }
+        }
+        return newArr.join('')
+    }
 }
 
 const today = new GetDate()
 // const randomDate = new D('1965','9','26') 
 console.log(today._date)
-console.log(today.year)
-console.log(today.day)
-console.log(today.date)
-console.log(today.month)
-console.log(today.hours)
-console.log(today.min)
+console.log(today.format('Y m, d' ))
