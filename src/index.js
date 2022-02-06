@@ -71,9 +71,28 @@ class GetDate {
         }
         return newArr.join('')
     }
+
+    when() {
+        const now = new Date();
+        const dy = this._date.getFullYear() - now.getFullYear();
+        const dm = this._date.getMonth() - now.getMonth();
+        const totalMonths = dy * 12 + dm;
+        const dd = Math.ceil((this._date - now) / 86400 / 1000);
+    
+        if (Math.abs(dd) < 7) {
+          return `${Math.abs(dd)} day${Math.abs(dd) > 1 ? 's' : ''} ${dd < 0 ? 'ago' : 'from now'}`;
+        } if (Math.abs(totalMonths) < 12) {
+          return `${Math.abs(dm)} month${Math.abs(dm) > 1 ? 's' : ''} ${dm < 0 ? 'ago' : 'from now'}`;
+        } if (Math.abs(dy) >= 1) {
+          return `${Math.abs(dy)} year${Math.abs(dy) > 1 ? 's' : ''} ${dy < 0 ? 'ago' : 'from now'}`;
+        }
+    }
 }
 
 const today = new GetDate()
 // const randomDate = new D('1965','9','26') 
 console.log(today._date)
 console.log(today.format('Y m, d' ))
+
+const d = new GetDate(2019, 0, 2, 3, 4, 5)
+console.log(d.when())
