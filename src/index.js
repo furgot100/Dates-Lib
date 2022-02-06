@@ -150,10 +150,12 @@ class GetDate {
     }
 }
 
-const today = new GetDate()
-// const randomDate = new D('1965','9','26') 
-console.log(today._date)
-console.log(today.format('Y m, d' ))
+// const today = new GetDate()
+// // const randomDate = new D('1965','9','26') 
+// // console.log(today._date)
+// // console.log(today.format('Y m, d' ))
 
-const d = new GetDate(2019, 0, 2, 3, 4, 5)
-console.log(d.when())
+// const d = new GetDate(2019, 0, 2, 3, 4, 5)
+// console.log(d.when())
+
+module.exports.GetDate = GetDate
