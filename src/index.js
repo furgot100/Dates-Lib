@@ -9,20 +9,48 @@ class GetDate {
         this._date = new Date(...args)
     }
 
+    /** 
+    * get year returns full year of the date obj
+    * @param {} input none
+    * @returns {number} the full year 
+    */
     get year() {
         return this._date.getFullYear()
     }
+
+    /** 
+    * get yr returns shortned year of the date obj
+    * @param {} input none
+    * @returns {number} the short year 
+    */
     get yr() {
         return this.year % 100
     }
 
+
+    /** 
+    * get month returns the month(string) of the dateobj
+    * @param {} input none
+    * @returns {string} the month of the dateobj
+    */
     get month() {
         return months[this._date.getMonth()]
     }
+
+    /** 
+    * get mon returns the month(short string) of the dateobj
+    * @param {} input none
+    * @returns {string} the short month
+    */
     get mon() {
         return mon[this._date.getMonth()]
     }
 
+    /** 
+    * get day returns the day of the dateobj
+    * @param {} input none
+    * @returns {string} the day of the week of the dateobj
+    */
     get day() {
         return days[this._date.getDay()]
     }
@@ -30,22 +58,50 @@ class GetDate {
     get date() {
         return this._date.getDate()
     }
+
+    /** 
+    * get dy returns the day(shortened string) of the dateobj
+    * @param {} input none
+    * @returns {string} the short day (first three letters) of the week of the dateobj
+    */
     get dy() {
         return dy[this._date.getDay()]
     }
 
+
+    /** 
+    * get hours returns the hour of the dateobj
+    * @param {} input none
+    * @returns {string} the hour of the dateobj occurence
+    */
     get hours() {
         return this._date.getHours()
     }
 
+
+    /** 
+    * get min returns the minutes of the dateobj
+    * @param {} input none
+    * @returns {string} the minutes of the dateobj occurence
+    */
     get min() {
         return this._date.getMinutes()
     }   
 
+    /** 
+    * get secs returns the seconds of the dateobj
+    * @param {} input none
+    * @returns {string} the seconds of the dateobj occurence
+    */
     get secs() {
         return this._date.getSeconds()
     }
 
+    /** 
+    * function format returns a formatted date
+    * @param {string} input string
+    * @returns {string} the format of the date
+    */
     format = (mask) => {
         const fobj = {
             'Y': this.year,
@@ -72,6 +128,11 @@ class GetDate {
         return newArr.join('')
     }
 
+    /** 
+    * function returns when a date occured compared to the current time
+    * @param {} input none
+    * @returns {string} how long before or after the current date
+    */
     when() {
         const now = new Date();
         const dy = this._date.getFullYear() - now.getFullYear();
